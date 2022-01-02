@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>THE GAME(ザ・ゲーム) Face to Face ONLINE</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </head>
+  <body>
+    このゲームは２人用となっています。<br/>
+    <div id='app2'>
+      <div id='entry' style='display:none'>
+        <input id="cName_inp" placeholder="ニックネームを入力してください"><br/>
+        <br/>
+        {% if gameid %}
+        {% else %}
+        <button id='createGame'>ゲームを作る(Make a Game)</button><br/>
+        Game ID: <span id='gId'></span><br/>
+        <input type='text' id='uriWgId' /><input type='button' id='clickCopy' value='copy'><br/>
+        {% endif %}
+        Game Status: <span id='gStatus'></span><br/>
+        <hr/>
+        <button id="joinGame">ゲームに参加する(Join the Game)</button><br/>
+        {% if gameid %}
+        <input type='hidden' id="gId_inp" value='{{ gameid }}'><br/>
+        {% else %}
+        <input id="gId_inp" placeholder="GameIDを入力してください"><br/>
+        {% endif %}
+        Your ID: <span id='cId'></span><br/>
+        Your Name: <span id='cName'></span><br/>
+        <hr/>
+        <h2>Member Applying</h2>
+        <span id='applyingList'></span>
+        <br/>
+      </div>
+      <div id='sec1' style='display:none'>
+        <hr/>
+        <button id="startGame">ゲームを始める(Let's start the Game)</button><br/>
+      </div>
+      <div id='sec2' style='display:none'>
+        <h2>Member Rotation</h2>
+        <span id='routeList'></span>
+        <hr/>
+        Your Turn: <span id='yTurn'></span><br/>
+        Your Cards:<br/>
+        <span id='holdCards'></span><br/>
+        <hr/>
+        Game Cards:<br/>
+        <h4><span id='name1'></span>&nbsp;side.</h4>
+        <input type='radio' name='area' id='area' value='0'/>[60&nbsp;>&nbsp;2]&nbsp;<span id='gameCards0'></span><br/>
+        <input type='radio' name='area' id='area' value='2'/>[1&nbsp;>&nbsp;59]&nbsp;<span id='gameCards2'></span><br/>
+        <h4><span id='name2'></span>&nbsp;side.</h4>
+        <input type='radio' name='area' id='area' value='1'/>[60&nbsp;>&nbsp;2]&nbsp;<span id='gameCards1'></span><br/>
+        <input type='radio' name='area' id='area' value='3'/>[1&nbsp;>&nbsp;59]&nbsp;<span id='gameCards3'></span><br/>
+        Submited Cards in turn:<br/>
+        <div id='submitCards'></div>
+        <hr/>
+      </div>
+      <div id='sec3' style='display:none'>
+        <input type='number' min='2' max='99' id="cardNum_inp" placeholder="番号を入力してください"><br/>
+        <button id="putCard">カードを出す(Put the cards)</button><br/>
+        <br/>
+        <button id="nextPlayer">次の人へ(Go on Next user)</button><br/>
+      </div>
+      <br/>
+      <span id='message'></span><br/>
+    </div>
+  </body>
+</html>
