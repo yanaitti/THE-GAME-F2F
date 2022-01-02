@@ -46,7 +46,7 @@ cache = Cache(app, config={
 
 
 @app.route('/')
-def homepage():
+def index():
     return render_template('index.html')
 
 
