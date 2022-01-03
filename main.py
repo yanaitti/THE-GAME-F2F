@@ -161,13 +161,13 @@ def processing_game(gameid, clientid):
             if len(player['stocks']) > 0 and len(player['holdcards']) < 6:
                 player['holdcards'].append(player['stocks'].pop(random.randint(0, len(player['stocks']) - 1)))
             else:
-                continue
+                break
     else: # 相手の場にも出したとき
         while len(player['holdcards']) < 6:
             if len(player['stocks']) > 0:
                 player['holdcards'].append(player['stocks'].pop(random.randint(0, len(player['stocks']) - 1)))
             else:
-                continue
+                break
 
     game['2picks'] = True
     game['submit'] = []
